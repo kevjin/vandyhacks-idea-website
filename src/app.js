@@ -1,6 +1,7 @@
 import React from 'react';
 import Butter from 'buttercms';
 import Header from '../src/header';
+import IdeaPost from '../src/ideaPost';
 
 var createReactClass = require('create-react-class');
 const butter = Butter('b60a008584313ed21803780bc9208557b3b49fbb');
@@ -32,29 +33,16 @@ var App = createReactClass({
             JSON.parse(this.state.data).map((card) => {
           return (
             <div key={card.desc}>
-            <h2 className="idea">{card.name}
-              <p className = "idea-desc">{card.desc}</p>
-            </h2>
-            <style jsx>{`
-              .idea {
-                background-color: #F4CDA5;
-                padding: 20px;
-                border-radius: 8px;
-                font-weight: bold;
-              }
-              .idea-desc {
-                font-weight: normal;
-                font-size: .8em;
-              }
-              html {
-                background-color: #3C989E;
-              }
-              `}</style>
-              </div>
+            <IdeaPost ideaName = {card.name} ideaDesc = {card.desc} />
+            </div>
           )
           })}
-        }
 
+          <style jsx>{`
+            html {
+              background-color: #3C989E;
+            }
+            `}</style>
         </div>
       );
     } else {
@@ -68,6 +56,9 @@ var App = createReactClass({
                   padding: 20px;
                   border-radius: 8px;
                   font-weight: bold;
+                }
+                html {
+                  background-color: #3C989E;
                 }
                 `}</style>
               </div>
