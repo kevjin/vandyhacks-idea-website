@@ -52,8 +52,8 @@ var App = createReactClass({
               <h2 className = "idea">Loading...</h2>
               <style jsx>{`
                 .idea {
-                  background-color: orange;
-                  padding: 20px;
+                  background-color: #F4CDA5;
+                  padding: 12px;
                   border-radius: 8px;
                   font-weight: bold;
                 }

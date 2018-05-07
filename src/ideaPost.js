@@ -25,29 +25,42 @@ export default class IdeaPost extends React.Component {
   render() {
     return (
       <div>
-      <div className="idea">
-        <div className = "committee">{this.state.committee}</div><h2 className = "name">{this.state.name}</h2>
-        <p className = "upvotes">{this.state.upvotes}</p>
-        <p className = "author">{this.state.author}</p>
-      </div>
+        <div className="idea">
+          <div className = "title">
+          <div className = "committee">{this.state.committee}</div><p className = "name">{this.state.name}</p>
+          <p className = "author">{this.state.author}</p>
+        </div>
+          <p className = "upvotes">{this.state.upvotes} Upvotes</p>
+        </div>
       <style jsx>{`
         .idea {
           background-color: #F4CDA5;
-          padding: 20px;
+          padding: 12px;
+          margin: 10px;
           border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
         }
         .committee {
           font-weight: bold;
+          display: inline-block;
+          padding: 10px;
+          margin: 5px;
+          background-color: green;
+          border-radius: 5px;
         }
         .name {
           font-weight: bold;
+          display: inline-block;
         }
         .author {
           font-size: .8em;
+          margin: 10px 0px 0 10px;
+          font-style: italic;
         }
         .upvotes {
           font-weight: bold;
-          font-size: .8em;
+          font-size: 1em;
         }
         `}</style>
         </div>
