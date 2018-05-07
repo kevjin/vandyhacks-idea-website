@@ -15,7 +15,7 @@ var App = createReactClass({
   //TODO: Used a hack to nest objects in react state, clean that up later because
   //objects shouldn't be nested like that to begin with.
   componentWillMount: function() {
-    fetch('http://localhost:8080/api/cards', {
+    fetch('http://vandyhacks-slackbot.herokuapp.com/api/cards', {
       method: 'GET',
     }).then(x => {return x.text()}).then(JSON.stringify()).then((x) => {
       this.setState({
