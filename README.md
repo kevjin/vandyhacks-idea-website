@@ -16,5 +16,5 @@ Trello is actually where we host all the idea posts. Our webapp grabs all the da
 
 ## Screenshots
 
-[![Screenshot 1.png](screenshot1.png)]
-[![Screenshot 2.png](screenshot2.png)]
+![Screenshot 1.png](screenshot1.png)
+![Screenshot 2.png](screenshot2.png)
