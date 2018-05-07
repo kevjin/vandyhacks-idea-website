@@ -4,8 +4,8 @@ export default class IdeaPost extends React.Component {
   constructor(props) {
     super(props);
     let ideaDesc = props.ideaDesc;
-    let committee = ideaDesc.substring(ideaDesc.indexOf("Committee:")+("Committee").length+2, ideaDesc.indexOf("Submitted"));
-    let author = ideaDesc.substring(ideaDesc.indexOf("Submitted by:")+("Submitted by:").length+2, ideaDesc.indexOf("Slack ID"));
+    let committee = ideaDesc.substring(ideaDesc.indexOf("Committee:")+("Committee:").length+1, ideaDesc.indexOf("Submitted"));
+    let author = ideaDesc.substring(ideaDesc.indexOf("Submitted by")+("Submitted by").length+1, ideaDesc.indexOf("Slack ID"));
     let upvotes = 0;
     if(ideaDesc.indexOf("Upvotes: ")!=-1) {
       if(ideaDesc.indexOf("Edited")==-1) {
@@ -27,7 +27,7 @@ export default class IdeaPost extends React.Component {
         <div className="idea">
           <div className = "title">
           <div className = "committee">{this.state.committee}</div><p className = "name">{this.state.name}</p>
-          <p className = "author">{this.state.author}</p>
+          <p className = "author">Submitted by {this.state.author}</p>
         </div>
           <p className = "upvotes">{this.state.upvotes} Upvotes</p>
         </div>

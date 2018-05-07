@@ -9,7 +9,7 @@ const TRELLO_TOKEN='3f21f8a33bb2beadba98370995c391d0d3969bda1444685360d80d346697
 const TRELLO_KEY='eeb8ec9509ebd9b6b846b0728c0bc8b1';
 var App = createReactClass({
   getInitialState: function() {
-    return {loaded: false};
+    return {loaded: false, isRecent: true, oldData: "{}"};
   },
   //returns all the cards on trello board in an array
   //TODO: Used a hack to nest objects in react state, clean that up later because
@@ -25,11 +25,16 @@ var App = createReactClass({
     });
   },
   sortIdeas: function() {
+    if(!this.state.isRecent) {
+      this.setState({
+        data: this.state.oldData,
+        isRecent: true
+      })
+      return;
+    }
     new Promise((resolve, reject) => {
       let sortByUpvotes = []
-      console.log(this.state.data);
       let cards = JSON.parse(this.state.data);
-      console.log("Test 1" + JSON.stringify(cards));
       for (let i in cards) {
         let upvotes = 0;
         if(cards[i].desc.indexOf("Upvotes: ")!=-1) {
@@ -41,17 +46,20 @@ var App = createReactClass({
         }
         sortByUpvotes.push([upvotes,cards[i]]);
       }
-      console.log(sortByUpvotes.toString());
       let sorted = sortByUpvotes.sort().reverse();
-      console.log(sorted.toString());
       let sortedCards = [];
       for (let i in sorted) sortedCards.push(sorted[i][1]);
-      console.log(sortedCards);
       resolve(sortedCards);
       reject("whoops");
     }).then(sortedCards  => {
+      this.setState((prevState,props) => {return {
+        oldData: prevState.data
+      }});
       this.setState({
         data: JSON.stringify(sortedCards)
+      });
+      this.setState({
+        isRecent: false
       });
     });
   },
