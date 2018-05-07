@@ -17,3 +17,4 @@ Currently we get Trello Cards from our server + bot: [VandyHacks SlackBot](https
 4. Clone this repo
 5. ```npm install``` in this root directory
 6. ```npm run start```
+7. Go to localhost:3000
