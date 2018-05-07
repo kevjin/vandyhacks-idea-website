@@ -9,12 +9,7 @@ Trello is actually where we host all the idea posts. Our webapp grabs all the da
 
 ## How to Run:
 
-Currently we get Trello Cards from our server + bot: [VandyHacks SlackBot](https://github.com/kevjin/vandyhacks-slackbot), so we need that as well
-
-1. Clone VandyHacks Slackbot
-2. ```npm install``` in its root directory
-3. ```npm start```
-4. Clone this repo
-5. ```npm install``` in this root directory
-6. ```npm run start```
-7. Go to localhost:3000
+1. Clone this repo
+2. ```npm install``` in this root directory
+3. ```npm run start```
+4. Go to localhost:3000
