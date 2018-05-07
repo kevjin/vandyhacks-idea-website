@@ -7,6 +7,18 @@ export default class IdeaPost extends React.Component {
     let committee = ideaDesc.substring(ideaDesc.indexOf("Committee:")+("Committee:").length+1, ideaDesc.indexOf("Submitted"));
     let author = ideaDesc.substring(ideaDesc.indexOf("Submitted by")+("Submitted by").length+1, ideaDesc.indexOf("Slack ID"));
     let upvotes = 0;
+
+    let tagColor = "green"
+    if(committee.indexOf("DEV")!=-1) {
+      tagColor = "#74e091";
+    }
+    if(committee.indexOf("LOGISTICS")!=-1) {
+      tagColor = "#5f9bfc";
+    }
+    if(committee.indexOf("SPONSORSHIP")!=-1) {
+      tagColor = "#f7884c";
+    }
+
     if(ideaDesc.indexOf("Upvotes: ")!=-1) {
       if(ideaDesc.indexOf("Edited")==-1) {
         upvotes = ideaDesc.substring(ideaDesc.indexOf("Upvotes: ")+("Upvotes: ").length, ideaDesc.length);
@@ -18,7 +30,8 @@ export default class IdeaPost extends React.Component {
       name: props.ideaName,
       committee: committee,
       author: author,
-      upvotes: upvotes
+      upvotes: upvotes,
+      tagColor: tagColor
     }
   }
   render() {
@@ -26,7 +39,7 @@ export default class IdeaPost extends React.Component {
       <div>
         <div className="idea">
           <div className = "title">
-          <div className = "committee">{this.state.committee}</div><p className = "name">{this.state.name}</p>
+          <div className = "committee" style={{backgroundColor: this.state.tagColor}}>{this.state.committee}</div><p className = "name">{this.state.name}</p>
           <p className = "author">Submitted by {this.state.author}</p>
         </div>
           <p className = "upvotes">{this.state.upvotes} Upvotes</p>
