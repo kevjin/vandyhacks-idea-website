@@ -4,12 +4,15 @@ let createReactClass = require('create-react-class');
 
 //credits to toggle css: https://stackoverflow.com/questions/39846282/how-to-add-the-text-on-and-off-to-toggle-button
 let Header = createReactClass({
+    sortIdeas: function() {
+      this.props.sortIdeas();
+    },
     render: function() {
       return(
           <div className = "wrapper">
             <h1 className = "header-text">VandyHacks Idea Board</h1>
             <label className="switch">
-            <input type="checkbox" id="togBtn"></input>
+            <input type="checkbox" id="togBtn" onClick={this.sortIdeas}></input>
             <div className="slider round">
             <span className="on">Popular</span>
             <span className="off">Recent</span>
@@ -25,8 +28,8 @@ let Header = createReactClass({
           <style jsx>{`
           .wrapper {
             background-color: #5DB5A4;
-            width: 100vw;
-            padding: 10px;
+            width: 98%;
+            padding: 1%;
           }
           .header-text {
             color: white;

@@ -7,7 +7,6 @@ export default class IdeaPost extends React.Component {
     let committee = ideaDesc.substring(ideaDesc.indexOf("Committee:")+("Committee").length+2, ideaDesc.indexOf("Submitted"));
     let author = ideaDesc.substring(ideaDesc.indexOf("Submitted by:")+("Submitted by:").length+2, ideaDesc.indexOf("Slack ID"));
     let upvotes = 0;
-    console.log("Upvotes: "+ ideaDesc.indexOf("Upvotes: ")+("Upvotes: ").length, ideaDesc.indexOf(" ",ideaDesc.indexOf("Upvotes: ")+("Upvotes: ").length));
     if(ideaDesc.indexOf("Upvotes: ")!=-1) {
       if(ideaDesc.indexOf("Edited")==-1) {
         upvotes = ideaDesc.substring(ideaDesc.indexOf("Upvotes: ")+("Upvotes: ").length, ideaDesc.length);

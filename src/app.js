@@ -24,11 +24,42 @@ var App = createReactClass({
       });
     });
   },
+  sortIdeas: function() {
+    new Promise((resolve, reject) => {
+      let sortByUpvotes = []
+      console.log(this.state.data);
+      let cards = JSON.parse(this.state.data);
+      console.log("Test 1" + JSON.stringify(cards));
+      for (let i in cards) {
+        let upvotes = 0;
+        if(cards[i].desc.indexOf("Upvotes: ")!=-1) {
+          if(cards[i].desc.indexOf("Edited")==-1) {
+            upvotes = cards[i].desc.substring(cards[i].desc.indexOf("Upvotes: ")+("Upvotes: ").length, cards[i].desc.length);
+          } else {
+            upvotes = cards[i].desc.substring(cards[i].desc.indexOf("Upvotes: ")+("Upvotes: ").length, cards[i].desc.indexOf("Edited"));
+          }
+        }
+        sortByUpvotes.push([upvotes,cards[i]]);
+      }
+      console.log(sortByUpvotes.toString());
+      let sorted = sortByUpvotes.sort().reverse();
+      console.log(sorted.toString());
+      let sortedCards = [];
+      for (let i in sorted) sortedCards.push(sorted[i][1]);
+      console.log(sortedCards);
+      resolve(sortedCards);
+      reject("whoops");
+    }).then(sortedCards  => {
+      this.setState({
+        data: JSON.stringify(sortedCards)
+      });
+    });
+  },
   render: function() {
     if (this.state.loaded) {
       return (
         <div>
-          <Header />
+          <Header sortIdeas = {this.sortIdeas} />
           {
             JSON.parse(this.state.data).map((card) => {
           return (
