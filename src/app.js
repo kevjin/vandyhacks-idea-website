@@ -43,16 +43,18 @@ var App = createReactClass({
           } else {
             upvotes = cards[i].desc.substring(cards[i].desc.indexOf("Upvotes: ")+("Upvotes: ").length, cards[i].desc.indexOf("Edited"));
           }
+          console.log(upvotes)
         }
         sortByUpvotes.push([upvotes,cards[i]]);
       }
-      let sorted = sortByUpvotes.sort().reverse();
+      sortByUpvotes.sort().reverse()
       let sortedCards = [];
-      for (let i in sorted) sortedCards.push(sorted[i][1]);
+      for (let i in sortByUpvotes) sortedCards.push(sortByUpvotes[i][1]);
+      console.log(sortedCards)
       resolve(sortedCards);
       reject("whoops");
     }).then(sortedCards  => {
-      this.setState((prevState,props) => {return {
+      this.setState((prevState, props) => {return {
         oldData: prevState.data
       }});
       this.setState({
@@ -69,12 +71,14 @@ var App = createReactClass({
         <div>
           <Header sortIdeas = {this.sortIdeas} />
           {
-            JSON.parse(this.state.data).map((card) => {
-          return (
-            <div key={card.desc}>
-            <IdeaPost ideaName = {card.name} ideaDesc = {card.desc} />
-            </div>
-          )
+            JSON.parse(this.state.data).map((card, i) => {
+              console.log(i + " : " + card.name)
+
+              return (
+                <div key={i + card.desc}>
+                <IdeaPost ideaName = {card.name} ideaDesc = {card.desc} />
+                </div>
+              )
           })}
 
           <style jsx>{`
