@@ -4,6 +4,7 @@ import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from './src/app.js';
+require('dotenv').config();
 
 function handleRender(req, res) {
   const html = ReactDOMServer.renderToString(<App />);
@@ -18,6 +19,7 @@ function handleRender(req, res) {
 }
 
 const app = express();
+const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname+'/dist'));
 
@@ -25,4 +27,4 @@ app.route('/*').get(function(req,res) {
   handleRender(req,res);
 });
 
-app.listen(3000);
+app.listen(port);

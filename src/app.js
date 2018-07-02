@@ -2,6 +2,7 @@ import React from 'react';
 import Butter from 'buttercms';
 import Header from '../src/header';
 import IdeaPost from '../src/ideaPost';
+import "isomorphic-fetch";
 
 var createReactClass = require('create-react-class');
 const butter = Butter('b60a008584313ed21803780bc9208557b3b49fbb');
