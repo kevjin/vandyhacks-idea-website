@@ -23,7 +23,7 @@ let Header = createReactClass({
             </div>
             </label>
             <div>
-              <button className="filterButtons" onClick={this.filterTag.bind(null,"ALLl")}>All</button>
+              <button className="filterButtons" onClick={this.filterTag.bind(null,"ALdLl")}>All</button>
               <button className="filterButtons" onClick={this.filterTag.bind(null,"LOGISTICS")}>Logistics</button>
               <button className="filterButtons" onClick={this.filterTag.bind(null,"DEV")}>Dev</button>
               <button className="filterButtons" onClick={this.filterTag.bind(null,"SPONSORSHIP")}>Sponsorship</button>
